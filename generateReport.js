@@ -15,9 +15,9 @@ const _render = async (template, subTemplate = null) => {
   const page = await context.newPage();
   await page.goto(`http://localhost:${activeReportPort}/index.html`);
   const pdfString = await page.evaluate(
-   ({template, subTemplate}) => {
+   ({template, subTemplate, licenseKey}) => {
     return new Promise(async (resolve, reject) => {
-     GC.ActiveReports.Core.setLicenseKey(licenseKey)
+     if(licenseKey) GC.ActiveReports.Core.setLicenseKey(licenseKey)
      await GC.ActiveReports.Core.FontStore.registerFonts('fontsConfig.json');
      const report = new GC.ActiveReports.Core.PageReport();
      await report.load("template", {
@@ -42,7 +42,7 @@ const _render = async (template, subTemplate = null) => {
       reject("Error occurred while reading binary string");
     })
    },
-   {template, subTemplate}
+   {template, subTemplate, licenseKey}
   );
   return Buffer.from(String(pdfString), "binary")
  } catch (err) {
