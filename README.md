@@ -23,7 +23,6 @@ Example:
    or
     renderPdf(template, subTemplate).then(pdfData => { console.log(pdfData) }) - using a promise
 
-Please note that this approach requires a <a href="https://www.grapecity.com/activereportsjs/pricing" rel="nofollow">single domain license</a>
+Please note that this approach requires a single domain license https://www.grapecity.com/activereportsjs/pricing
 
 The package uses GrapeCity products.
-
