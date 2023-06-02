@@ -1,15 +1,16 @@
 let config = {
- activeReportPort: 5000
+ activeReportPort: 5000,
+ licenseKey: ''
 };
 
-function setReportJSConfig(newConfig) {
+function _setReportJSConfig(newConfig) {
  config = { ...config, ...newConfig };
 }
-function getReportJSConfig() {
+function _getReportJSConfig() {
  return config;
 }
 
 module.exports = {
- setReportJSConfig,
- getReportJSConfig,
+ _setReportJSConfig,
+ _getReportJSConfig,
 };

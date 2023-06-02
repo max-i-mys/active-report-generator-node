@@ -1,9 +1,9 @@
 const { _activeReportServer } = require('./server');
 const chromium = require("playwright").chromium;
-const { getReportJSConfig } = require('./config');
+const { _getReportJSConfig } = require('./config');
 
-const render = async (template, subTemplate = null) => {
- const { activeReportPort } = getReportJSConfig()
+const _render = async (template, subTemplate = null) => {
+ const { activeReportPort, licenseKey } = _getReportJSConfig()
  const server = await _activeReportServer()
  let browser = null;
  try {
@@ -17,7 +17,7 @@ const render = async (template, subTemplate = null) => {
   const pdfString = await page.evaluate(
    ({template, subTemplate}) => {
     return new Promise(async (resolve, reject) => {
-     //GC.ActiveReports.Core.setLicenseKey(<INSERT YOUR DISTRIBUTION KEY HERE>)
+     GC.ActiveReports.Core.setLicenseKey(licenseKey)
      await GC.ActiveReports.Core.FontStore.registerFonts('fontsConfig.json');
      const report = new GC.ActiveReports.Core.PageReport();
      await report.load("template", {
@@ -53,5 +53,5 @@ const render = async (template, subTemplate = null) => {
 }
 
 module.exports = {
- render
+ _render
 };
