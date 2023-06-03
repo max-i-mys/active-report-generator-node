@@ -1,28 +1,46 @@
 # active-report-generator-node
-Package for generating pdf reports using ActiveReportJS library in the node.js
 
-##Installation 
+## Package for generating pdf reports using [ActiveReportJS](https://www.grapecity.com/activereportsjs) library in the node.js
+
+### _Installation_
+
 ```bash
 npm i active-report-generator-node
+```
 
-To pass the settings, you need to import the "setGeneratorConfig" function from the active-report-generator-node package
+To pass the settings, you need to import the "setGeneratorConfig" function from the    
+active-report-generator-node package
 which takes the port number and license key as arguments.
 
 The port number is the port on which chromium is running.
-Example:
-    setGeneratorConfig({ activeReportPort: 5000, licenseKey: 'your license key'})
 
-To generate a PDF report, you need to import the renderPdf function from the active-report-generator-node package
-And pass two arguments to it:
+_Example:_
 
-1) The template in JSON or RDLX-JSON format (required).
-2) The subreport template in JSON or RDLX-JSON format, if a subreport is used (optional).
+```js
+setGeneratorConfig({ activeReportPort: 5000, licenseKey: "your license key" });
+```
 
-Example:
-    const pdfData = await renderPdf(template, subTemplate) - in an async function
-   or
-    renderPdf(template, subTemplate).then(pdfData => { console.log(pdfData) }) - using a promise
+To generate a PDF report, you need to import the renderPdf function from the active-report-generator-node package   
+and pass two arguments to it:
 
-Please note that this approach requires a single domain license https://www.grapecity.com/activereportsjs/pricing
+1. The template in JSON or RDLX-JSON format (required).
+2. The subreport template in JSON or RDLX-JSON format, if a subreport is used (optional).
 
-The package uses GrapeCity products.
+_Example:_  
+Async function
+
+```js
+const pdfData = await renderPdf(template, subTemplate);
+```
+
+Promise
+
+```js
+renderPdf(template, subTemplate).then((pdfData) => {
+	console.log(pdfData);
+});
+```
+
+Please note that this approach requires a [single domain license](https://www.grapecity.com/activereportsjs/pricing)
+
+The package uses [GrapeCity](https://www.grapecity.com/activereportsjs) products.
