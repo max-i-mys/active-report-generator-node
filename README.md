@@ -1,5 +1,5 @@
 # active-report-generator-node
-
+___
 ## Package for generating pdf reports using [ActiveReportJS](https://www.grapecity.com/activereportsjs) library in the node.js
 
 ### _Installation_
