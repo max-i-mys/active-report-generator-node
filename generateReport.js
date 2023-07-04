@@ -14,6 +14,10 @@ const _render = async (template, subTemplate = null) => {
   const context = await browser.newContext();
   const page = await context.newPage();
   await page.goto(`http://localhost:${activeReportPort}/index.html`);
+  console.log('subTemplate---->', subTemplate)
+  console.log('template---->', template)
+  console.log('port---->', `http://localhost:${activeReportPort}/index.html`)
+  console.log('page---->', page)
   const pdfString = await page.evaluate(
    ({template, subTemplate, licenseKey}) => {
     return new Promise(async (resolve, reject) => {
